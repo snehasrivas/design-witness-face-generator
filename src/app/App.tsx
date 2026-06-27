@@ -520,7 +520,7 @@ const handleGenerateFaces = async () => {
     setShowResults(false);
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/generate", { prompt });
+      const response = await axios.post("https://taekwondo-mullets-quickly.ngrok-free.dev/generate", { prompt });;
       const apiData = response.data;
       
       console.log("Backend Se Aaya Data:", apiData); // Yeh browser console mein dikhega
