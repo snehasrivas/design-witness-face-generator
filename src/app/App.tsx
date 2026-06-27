@@ -520,7 +520,15 @@ const handleGenerateFaces = async () => {
     setShowResults(false);
 
     try {
-      const response = await axios.post("https://taekwondo-mullets-quickly.ngrok-free.dev/generate", { prompt });;
+    const response = await axios.post(
+  "https://taekwondo-mullets-quickly.ngrok-free.dev/generate", 
+  { prompt },
+  {
+    headers: {
+      "ngrok-skip-browser-warning": "true"
+    }
+  }
+);
       const apiData = response.data;
       
       console.log("Backend Se Aaya Data:", apiData); // Yeh browser console mein dikhega
