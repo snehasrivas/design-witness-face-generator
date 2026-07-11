@@ -41,7 +41,7 @@ LORA_PATH = "C:\\face generation module\\DesignWitnessFaceGeneratorUI-main\\mode
 if os.path.exists(LORA_PATH):
     print(f"Loading LoRA weights from '{LORA_PATH}'...")
   
-    pipe.load_lora_weights("../", weight_name="adapter_model.safetensors")
+    pipe.load_lora_weights("C:\\face generation module\\model", weight_name="adapter_model.safetensors")
     print("LoRA Model loaded successfully into Stable Diffusion!")
 else:
     print(f"⚠️ WARNING: '{LORA_PATH}' nahi mili! Base SD Model run hoga.")
