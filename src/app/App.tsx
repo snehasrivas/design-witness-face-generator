@@ -529,11 +529,22 @@ const handleGenerateFaces = async () => {
     }
   }
 );
-      const apiData = response.data;
+     const apiData = response.data;
       
-      console.log("Backend Se Aaya Data:", apiData); // Yeh browser console mein dikhega
+      console.log("Backend Se Aaya Data:", apiData); 
+let facesArray = [];
+if (apiData && apiData.candidates) {
+  
+    facesArray = apiData.candidates;
+} else if (Array.isArray(apiData)) {
+ 
+    facesArray = apiData;
+} else {
+    facesArray = [apiData];
+}
 
-      // 1. Ek safe array banate hain agar mapResponseToFaces fail ho jaye
+console.log("Cleaned Faces Array:", facesArray);
+const faces = mapResponseToFaces(facesArray);
       let newFaces: any[] = [];
       
       // Backend ke alag-alag patterns ko handle karne ke liye smart parse:
