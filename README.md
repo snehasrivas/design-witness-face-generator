@@ -1,7 +1,6 @@
 
   # Design  Face Sketch Generator
 
- # Design Witness Face Generator 🕵️‍♂️🎨
 
 A forensic AI-powered system designed to generate accurate suspect profiles from witness verbal descriptions. This tool leverages Stable Diffusion to transform descriptive prompts into detailed pencil sketches.
 
