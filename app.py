@@ -25,7 +25,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
 print("Loading Stable Diffusion Pipeline...")
-model_id = "OFA-Sys/small-stable-diffusion-v0"
+model_id = "runwayml/stable-diffusion-v1-5"
 
 # Load Base Model
 if torch.cuda.is_available():
@@ -34,14 +34,18 @@ else:
     pipe = StableDiffusionPipeline.from_pretrained(model_id) # Fallback for CPU
 
 pipe.to(device)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LORA_DIR = os.path.join(BASE_DIR, "model")
+LORA_FILE = "adapter_model.safetensors"
+LORA_PATH = os.path.join(LORA_DIR, LORA_FILE)
 
-
-LORA_PATH = "C:\\face generation module\\DesignWitnessFaceGeneratorUI-main\\model\\adapter_model.safetensors"
+#LORA_PATH = "C:\\face generation module\\DesignWitnessFaceGeneratorUI-main\\model\\adapter_model.safetensors"
 
 if os.path.exists(LORA_PATH):
     print(f"Loading LoRA weights from '{LORA_PATH}'...")
   
-    pipe.load_lora_weights("C:\\face generation module\\model", weight_name="adapter_model.safetensors")
+ 
+    pipe.load_lora_weights(LORA_DIR, weight_name=LORA_FILE)
     print("LoRA Model loaded successfully into Stable Diffusion!")
 else:
     print(f"⚠️ WARNING: '{LORA_PATH}' nahi mili! Base SD Model run hoga.")
